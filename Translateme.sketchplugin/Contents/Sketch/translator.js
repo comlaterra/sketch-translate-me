@@ -254,6 +254,36 @@ Translator.prototype.translateSingleText = function (context) {
   }
 }
 
+Translator.prototype.translateManyTexts = function (context) {
+  var dialog = this.buildDialog(context);
+  var languageIndex = handleAlertResponse(dialog, dialog.runModal());
+
+  if (languageIndex == null) {
+    return;
+  }
+
+  for (let index = 0; index < context.selection.length; index++) {
+    var textLayer = context.selection[index];
+    var baseLanguage = detectLenguage(textLayer.stringValue());
+
+    if (!baseLanguage) {
+      return;
+    }
+
+    var toLanguage = this.languageCodes[languageIndex];
+
+    if (!toLanguage) {
+      return;
+    }
+
+    if (baseLanguage == toLanguage) {
+      context.document.showMessage('Please select a different language');
+    }
+
+    textLayer.setStringValue(getSingleTranslation(textLayer.stringValue(), baseLanguage, toLanguage)); 
+  }
+}
+
 Translator.prototype.translateArtboard = function (context) {
   if (!checkCount(context)) {
     return;

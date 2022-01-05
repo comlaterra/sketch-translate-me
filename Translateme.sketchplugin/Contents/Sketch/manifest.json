@@ -4,9 +4,16 @@
   "commands" : [
     {
       "script" : "main.cocoascript",
-      "name" : "Translate Layer",
+      "name" : "Translate One Layer",
       "handler" : "runSimpleTranslation",
       "identifier" : "scriptSingle",
+      "shortcut" : "shift cmd w"
+    },
+    {
+      "script" : "main.cocoascript",
+      "name" : "Translate Many Layers",
+      "handler" : "runManyTranslations",
+      "identifier" : "scriptMany",
       "shortcut" : "shift cmd w"
     },
     {
@@ -34,6 +41,7 @@
   "menu" : {
     "items" : [
       "scriptSingle",
+      "scriptMany",
       "scriptArtboard",
       "scriptEverything",
       "scriptKey"

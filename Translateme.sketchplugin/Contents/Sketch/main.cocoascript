@@ -5,6 +5,11 @@ function runSimpleTranslation (context) {
   translator.translateSingleText(context);
 }
 
+function runManyTranslations (context) {
+  var translator = new Translator();
+  translator.translateManyTexts(context);
+}
+
 function runArtboardTranslation (context) {
   var translator = new Translator();
   translator.translateArtboard(context);
